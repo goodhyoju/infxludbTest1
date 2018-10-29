@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration> 
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>▶ %highlight(%-5level %d{HH:mm:ss}) %cyan(%logger{15}[%method:%line]) - %msg %n</pattern>
+        </encoder>
+    </appender>
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/Users/admin/Documents/dev/logs/logback/test.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/Users/admin/Documents/dev/logs/logback/test.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+             <pattern>
+                ▶ %-5level %d{HH:mm:ss} %logger{15}[%method:%line] - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+   <logger name="org.springframework" level="info">
+        <appender-ref ref="console"/>
+   </logger>
+   <logger name="com.skt.cl.test1" level="debug">
+         <appender-ref ref="file"/>
+    </logger>
+    
+</configuration> 
+
+
+
